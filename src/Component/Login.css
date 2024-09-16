@@ -1,0 +1,76 @@
+.div1
+{
+    width: 100vw;
+    height: 100vh;
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.divc{
+    background-color:grey;
+    width: 25vw;
+    height: 60vh;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+.img-login{
+    width: 25vw;
+    height: 60vh;
+}
+.div3
+{
+    /* background-color: purple; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+.h1-login{
+    font-style: italic;
+}
+.input1{
+    box-sizing: border-box;
+    width:100%;
+    height: 5vh;
+    border-radius: 5px;
+    margin:5px;
+}
+:placeholder-shown
+{
+    font-size: 20px;
+}
+.button-login
+{
+    margin-top: 15px;
+    width: 40%;
+    height: 5vh;
+    margin-left: 110px;
+    border-radius: 13px;
+    font-size: 20px; 
+    background-color: steelblue;
+}
+.div7
+{
+    margin-top: 17px;
+    margin-left: 110px;
+}
+.Link-cs
+{
+    text-decoration: none;
+    font-size: 20px; 
+    color:black;
+}
+
+.div5
+{
+    /* background-color: rgb(14, 113, 135); */
+    width: 21vw;
+    height: 27vh;
+}
+.div6 >p
+{
+    /* background-color: rgb(64, 131, 2); */
+    font-size: 20px;
+}

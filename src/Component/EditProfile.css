@@ -1,0 +1,31 @@
+.Ep-box
+{
+    width: 100vw;
+    height: 100vh;
+    /* background-color: azure; */
+    display: flex;
+    justify-content: center ;
+    align-items: center;
+}
+.Ep-common
+{
+    /* background-color: aqua; */
+    width: 30vw;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center ; */
+    align-items: center;
+    gap: 40px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+.Ep-Input
+{
+    width: 20vw;
+    height: 30px;
+    display: block;
+    margin: 10px;
+    padding: 10px;
+    border-radius:10px ;
+}

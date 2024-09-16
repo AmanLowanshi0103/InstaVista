@@ -1,0 +1,37 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+.navbar{
+    display: flex;
+    /* height: 64px; */
+    justify-content: space-between;
+    align-items: center;
+}
+.home{
+    display: flex;
+    align-items: center;
+}
+.list{
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    font-size: 20px;
+    margin-top: 20px;
+}
+.nav-content
+{
+    text-decoration: none;
+    color:black;
+}
+.logout-button
+{
+    width: 100px;
+    height: 30px;
+    font-size: 15px;
+    /* border:none; */
+    background-color: white;
+    border-radius: 10px;
+}

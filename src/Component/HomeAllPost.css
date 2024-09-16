@@ -1,0 +1,107 @@
+.card-container
+{
+    width: 50vw;
+    height: 110vh;
+    border: 2px solid black;
+    display:flex;
+    flex-direction: column;
+    /* gap:40px; */
+}
+.card-img-top
+{
+    margin: auto;
+    width: 48vw;
+    height: 90vh;
+    display: block;
+    border-radius: 10px;
+}
+.button-card
+{
+    margin:10px;
+    width:120px;
+    border-radius: 12px;
+    background-color: steelblue;
+}
+.Home-Username
+{
+    width: 50vw;
+    height: 3vh;
+    /* background-color: blue; */
+    margin-left:12px ;
+    margin-top: 10px;
+}
+.userName-heading
+{
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    background-color: white;
+}
+.userName-horizonatal
+{
+    /* width: 50vw; */
+    height: 20px;
+    /* margin: 0; */
+}
+
+
+.commentModal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 1000; /* Ensure it overlaps other content */
+  }
+  
+  /* Modal content */
+  .commentModal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 700px;
+    min-height: 500px;
+    position: relative;
+  }
+  
+  /* Close button */
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+    transition: color 0.2s ease-in-out;
+  }
+  
+  .close-btn:hover {
+    color: #ff0000; /* Change color on hover */
+  }
+  
+
+  .button-sumbit-ProfilePage {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .button-sumbit-ProfilePage:hover {
+    background-color: #0056b3;
+  }
+  .stats
+  {
+    display: flex;
+    gap:20px;
+  }

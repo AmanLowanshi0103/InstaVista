@@ -1,0 +1,27 @@
+.profile-card
+{
+    width:20vw;
+    height: 40vh;
+    /* background-color: red;*/
+    border: 2px solid black;
+}
+.profile-card-img-top
+{
+    width:19vw;
+    margin: 5px;
+    padding: 5px;
+    height: 35vh;
+}
+.Post-button
+{
+    display: flex;
+    gap:0;
+}
+.button-post
+{
+    margin: auto;
+    width: 40px;
+    height: 25px;
+    border-radius: 5px;
+    background-color: steelblue;
+}

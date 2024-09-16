@@ -1,0 +1,195 @@
+
+issue 3: comment is disappearing from the modal when user double click on it.
+
+
+issue 4: all the post gets delete when user delete the comment of the post on redirecting to the use page
+
+
+issue 5: on 
+
+
+
+
+
+
+
+
+
+
+
+
+
+import React, { useEffect, useRef, useState } from "react";
+import Navbar from "./Navbar";
+import { useNavigate } from "react-router-dom";
+import "./ProfilePage.css";
+import { useParams } from "react-router-dom";
+import ProfilePagePost from "./ProfilePagePost";
+
+const UserProfile = () => {
+
+  useEffect(() => {
+    userData();
+  }, []);
+
+  const { userName } = useParams();
+  let navig = useNavigate();
+  const [UserProfileData, SetUserProfileData] = useState([]);
+  const [UserPost, SetUserPost] = useState([]);
+  const [loginUser, setLoginUser] = useState("");
+  const [DataFollower,setDataFollower]=useState([]);
+  const [DataFollowing,setDataFollowing]=useState([]);
+
+  const userData = async () => {
+    const token = localStorage.getItem("token");
+    const response = await fetch(
+      `http://localhost:4000/api/instavista/user/${userName}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          token: token,
+        },
+      }
+    );
+    const res = await response.json();
+    SetUserProfileData(res.User);
+    console.log(res);
+    SetUserPost(res.post);
+    setLoginUser(res.SameUser);
+    setDataFollower(UserProfileData.Follower)
+    setDataFollowing(UserProfileData.Following)
+    console.log(DataFollower)
+    console.log(DataFollowing)
+    console.log(loginUser)
+    if (res.LoginUser == true) {
+      navig("/profile");
+    }
+  };
+
+  let navi = useNavigate();
+
+  const followButton = async () => {
+    const token = localStorage.getItem("token");
+    const response = await fetch(
+      "http://localhost:4000/api/instavista/followuser",
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          token: token,
+        },
+        body: JSON.stringify({ OtherUser: UserProfileData._id }),
+      }
+    );
+    const res = await response.json();
+    // console.log(res);
+    userData();
+  };
+
+  const unfollowButton = async () => {
+    const token = localStorage.getItem("token");
+    const response = await fetch(
+      "http://localhost:4000/api/instavista/unfollowuser",
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          token: token,
+        },
+        body: JSON.stringify({ OtherUser: UserProfileData._id }),
+      }
+    );
+    const res = await response.json();
+    userData();
+  };
+
+  
+
+  if (!UserProfileData) {
+    return <div>Loading...</div>; // Show a loading state while data is being fetched
+  }
+  return (
+    <>
+      <div className="main-container-profilepage-first">
+        <div>
+          <Navbar></Navbar>
+        </div>
+        <div className="common-container-div">
+          <div className="profile-page">
+            <div className="Image-and-profilediv">
+              <div className="image-and-profile">
+                <div className="image-div">
+                  <img
+                    src="https://images.unsplash.com/photo-1645177628172-a94c1f96e6db?ixlib=rb-…"
+                    alt="Profile"
+                    className="profile-pic"
+                  />
+                </div>
+                <div className="profile-info">
+                  <h1>{UserProfileData.UserName}</h1>
+                  <div className="stats">
+                    <span>
+                      <strong>{UserPost.length}</strong> posts
+                    </span>
+                    <span>
+                      <strong>
+                        {UserProfileData &&
+                          UserProfileData.Follower && UserProfileData.Follower.length}
+                      </strong>{" "}
+                      followers
+                    </span>
+                    <span>
+                      <strong>
+                        {UserProfileData &&
+                          UserProfileData.Follower &&
+                          UserProfileData.Following.length}
+                      </strong>{" "}
+                      following
+                    </span>
+                  </div>
+                  <p className="profile-name">{UserProfileData.FullName}</p>
+                  <p className="bio">{UserProfileData.Bio}</p>
+                </div>
+              </div>
+              {UserProfileData && UserProfileData.Follower &&
+              DataFollower? (
+                <div>
+                  <button className="edit-profile" onClick={unfollowButton}>
+                    Unfollow
+                  </button>
+                </div>
+              ) : (
+                <div>
+                  <button className="edit-profile" onClick={followButton}>
+                    Follow
+                  </button>
+                </div>
+              )}
+
+              <div className="Post-div">
+                {!UserProfileData.AccountType || DataFollower.map((e) => e.reqId === loginUser) &&
+                    UserPost.map((e) => {
+                      return (
+                        <div className="2">
+                          <ProfilePagePost
+                            id={e._id}
+                            image={e.image}
+                            likes={e.likes}
+                            AllPost={userData}
+                            checkUser={false}
+                            comment={e.comment}
+                          />
+                        </div>
+                      );
+                    })}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default UserProfile;

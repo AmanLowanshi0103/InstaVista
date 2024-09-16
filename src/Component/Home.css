@@ -1,0 +1,26 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+.Home-Conatianer
+{
+    margin-top: 10px;
+    /* background-color: aqua; */
+    width:100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    gap:12px;
+}
+.Main-Container-home
+{
+    display: flex;
+    flex-direction: column;
+}
+.card-align{
+    width: 50vw;
+    height: 100vh;
+}

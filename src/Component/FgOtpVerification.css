@@ -1,0 +1,32 @@
+.fg-otp-div
+{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.fgv-common
+{
+    background-color:grey;
+    width: 25vw;
+    height: 50vh;
+    border: 2px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:50px;
+}
+.fgv-heading
+{
+    margin: 0;
+    padding: 0;
+    font-style: italic;
+}
+.fgv-inp{
+    width:8vw;
+    height: 4vh;
+    margin-left: 125px;
+}
