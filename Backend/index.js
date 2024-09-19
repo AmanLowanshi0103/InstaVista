@@ -12,6 +12,7 @@ app.use("/api/instavista",require("./Routes/User.js"))
 app.use("/api/instavista",require("./Routes/Otp.js"))
 app.use("/api/instavista",require("./Routes/Post.js"))
 app.use("/api/instavista",require("./Routes/otheruser.js"))
+app.use("/api/instavista",require("./Routes/Message.js"))
 
 app.listen(port,()=>
 {

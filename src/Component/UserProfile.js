@@ -111,6 +111,12 @@ const UserProfile = () => {
     console.log(err)
   }
 
+  // Message Implemetation
+  const MessageChange = async()=>
+  {
+    navigate(`/message/${userProfileData.UserName}`)
+  }
+
   return (
     <div className="main-container-profilepage-first">
       <Navbar />
@@ -142,10 +148,14 @@ const UserProfile = () => {
                 <p className="bio">{userProfileData.Bio}</p>
               </div>
             </div>
-            {isFollowing ? (
-              <button className="edit-profile" onClick={unfollowUser}>
+            {isFollowing ? (<div>
+              <button className="edit-profile m-3" onClick={unfollowUser}>
                 Unfollow
               </button>
+              <button className="edit-profile m-3" onClick={MessageChange}>
+                Message
+              </button>
+              </div>
             ) : (
               <button className="edit-profile" onClick={followUser}>
                 Follow

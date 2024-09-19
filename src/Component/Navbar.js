@@ -29,6 +29,11 @@ const Navbar = () => {
               Settings
             </Link>
           </li>
+          <li>
+            <Link className="nav-content" to="/messages">
+              Messages
+            </Link>
+          </li>
         </ul>
       </div>
       <div>

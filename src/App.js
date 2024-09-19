@@ -18,6 +18,8 @@ import { PostProvider } from './Reducers/ContextReducers';
 import instaContext from './Context/instaContext';
 import Settings from './Component/Settings';
 import CreateNewPassword from './Component/CreateNewPassword';
+import Messages from './Component/Messages';
+import UserMessage from './Component/UserMessage';
  
 function App() {
   return (
@@ -39,6 +41,8 @@ function App() {
       <Route exact path="/editprofile" element={<EditProfile/>}/>
       <Route exact path="/settings" element={<Settings/>}/>
       <Route exact path="/createnewpassword" element={<CreateNewPassword/>}/>
+      <Route exact path="/messages" element={<Messages/>}/>
+      <Route exact path="/message/:username" element={<UserMessage/>}/>
     </Routes>
   </Router>
   </PostProvider>
