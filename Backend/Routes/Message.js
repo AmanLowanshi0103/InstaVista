@@ -3,6 +3,7 @@ const fectchUser = require("../Middle/fetchUser");
 const Conversation = require("../Schemas/ConversationSchemas");
 const Message=require("../Schemas/MessageSchemas")
 const user = require("../Schemas/userSchemas");
+const { getReceiverSocketId } = require("../socket");
 const router = express.Router();
 
 router.get("/getall/:username", fectchUser,async(req,res)=>
@@ -64,6 +65,12 @@ router.post("/send/:username", fectchUser, async(req,res)=>{
 		await Promise.all([conversation.save(), newMessage.save()]);
 
 		// SOCKET IO FUNCTIONALITY WILL GO HER
+
+		const receiverSocketId=getReceiverSocketId(chatUser._id);
+		if(receiverSocketId)
+		{
+			io.to(receiverSocketId).emit("newMessage",newMessage)
+		}
 
 		res.status(201).json(newMessage);
 	} catch (error) {

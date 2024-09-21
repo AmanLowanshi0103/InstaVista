@@ -140,3 +140,14 @@
     border-radius: 20px;
     cursor: pointer;
 }
+
+.status-indicator {
+    width: 12px;
+    height: 12px;
+    background-color: green; /* Online color */
+    border-radius: 50%;
+    border: 2px solid white;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }

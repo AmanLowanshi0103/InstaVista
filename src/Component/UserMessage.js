@@ -13,8 +13,6 @@ const UserMessage = () => {
 
   const { username } = useParams();
 
-
-
   // for Storing messages
   const [Conversation, setConversation] = useState([]);
 
@@ -75,7 +73,7 @@ const UserMessage = () => {
   useEffect(() => {
     UserData1();
     setChatUserName(username)
-    onClick(chatUserName)
+    onClick(username)
   }, []);
 
 
