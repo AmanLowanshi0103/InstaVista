@@ -182,4 +182,22 @@
     display: flex;
     gap:20px;
   }
+
+
+  .following-page-list
+  {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+
+.following-page-button
+{
+
+  background-color: white;
+  width: 38vw;
+  height: 5vh; 
+
+}
   

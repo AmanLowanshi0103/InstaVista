@@ -5,6 +5,7 @@ const Message=require("../Schemas/MessageSchemas")
 const user = require("../Schemas/userSchemas");
 const { getReceiverSocketId } = require("../socket");
 const router = express.Router();
+const {io}=require("../socket")
 
 router.get("/getall/:username", fectchUser,async(req,res)=>
 {
@@ -66,7 +67,8 @@ router.post("/send/:username", fectchUser, async(req,res)=>{
 
 		// SOCKET IO FUNCTIONALITY WILL GO HER
 
-		const receiverSocketId=getReceiverSocketId(chatUser._id);
+		const receiverSocketId=await getReceiverSocketId(chatUser._id);
+		console.log(receiverSocketId)
 		if(receiverSocketId)
 		{
 			io.to(receiverSocketId).emit("newMessage",newMessage)

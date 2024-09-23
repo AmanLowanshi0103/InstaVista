@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 
 import "./Message.css";
+import { useMessageContext } from "../Context/MessageContext";
+import { useListenMessage } from "../Hooks/useListenMessage";
 
 const Messages = () => {
   const [ProfileData, setProfileData] = useState({});
@@ -11,7 +13,8 @@ const Messages = () => {
   const [chatUserName, setChatUserName] = useState("");
 
   // for Storing messages
-  const [Conversation, setConversation] = useState([]);
+  const {message,setMessage}=useMessageContext();
+  useListenMessage()
 
   // Render update
   const [Test,setTest]=useState(0)
@@ -49,7 +52,7 @@ const Messages = () => {
       }
     );
     const res = await response.json();
-    setConversation(res);
+    setMessage(res);
     setWindowDisplay(true);
   };
 
@@ -66,8 +69,9 @@ const Messages = () => {
       },
       body:JSON.stringify({message:TextMessage})
     })
-    const res=response.json();
+    const res=await response.json();
     console.log(res)
+    setMessage([...message,TextMessage])
     setTextMessage("")
     onClick(chatUserName)
   }
@@ -109,8 +113,8 @@ const Messages = () => {
                     <div className="chat-header-name">{chatUserName}</div>
                   </div>
                 </div>
-                {Conversation &&
-                  Conversation.map((e) => {
+                {message &&
+                  message.map((e) => {
                     return <div className="chat-messages">
                       <div
                         className={`message ${

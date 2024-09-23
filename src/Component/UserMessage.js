@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import { useNavigate, useParams } from "react-router-dom";
 
+// import useConversation from "../Zustand/useConversation"
+
 
 
 import "./Message.css";
@@ -10,6 +12,8 @@ const UserMessage = () => {
 
   const [chatUserName, setChatUserName] = useState("");
   const [ProfileData,setProfileData]=useState({})
+
+  // const {message,setMessage}=useConversation()
 
   const { username } = useParams();
 
@@ -49,6 +53,7 @@ const UserMessage = () => {
     );
     const res = await response.json();
     setConversation(res);
+    // setMessage(res)
   };
 
   const [TextMessage,setTextMessage]=useState("")
@@ -64,7 +69,7 @@ const UserMessage = () => {
       },
       body:JSON.stringify({message:TextMessage})
     })
-    const res=response.json();
+    const res= await response.json();
     console.log(res)
     setTextMessage("")
     onClick(chatUserName)

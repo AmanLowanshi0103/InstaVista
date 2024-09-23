@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Link, useNavigate } from "react-router-dom";
 import "./Login.css"
+import loginHook from "../Hooks/loginHook"
 
 const images = require.context('../images', false, /\.(png|jpe?g|svg)$/);
 
@@ -17,15 +18,8 @@ const Login = () => {
   const onSubmit=async(e)=>
   {
     e.preventDefault();
-    const Response= await fetch("http://localhost:4000/api/instavista/loginuser",{
-      method:"POST",
-      headers:{
-        "Content-Type":"application/json"
-      },
-      body:JSON.stringify(LoginData)
-    })
-    const Res= await Response.json();
-    // console.log(Res);
+    const Res= await loginHook(LoginData)
+    console.log(Res)
     if(Res.success)
     {
       localStorage.setItem("token",Res.token);

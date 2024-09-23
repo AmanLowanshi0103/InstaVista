@@ -189,6 +189,11 @@ const ProfilePage = () => {
     console.log(err)
   }
 
+  const NavigationOther = async(UserName)=>
+  {
+    navi(`/profile/${UserName}`)
+  }
+
 
   return (
     <>
@@ -253,13 +258,13 @@ const ProfilePage = () => {
                           &times;
                         </span>
                         <h2>Follower</h2>
-                        <div>
+                        <div className="following-page-list">
                           {followerData && followerData.map((e)=>
-                          (
-                            <div>
-                              {e.UserName}
+                          {
+                            return <div>
+                            <button className="following-page-button" onClick={()=>NavigationOther(e.UserName)}>{e.UserName}</button> 
                             </div>
-                          ))}
+                          })}
                         </div>
                       </div>
                     </div>
@@ -274,13 +279,13 @@ const ProfilePage = () => {
                           &times;
                         </span>
                         <h2>Following</h2>
-                        <div>
+                        <div className="following-page-list">
                         {followingData && followingData.map((e)=>
-                          (
-                            <div>
-                              {e.OtherUserName}
-                            </div>
-                          ))}
+                          {
+                            return <div>
+                            <button className="following-page-button" onClick={()=>NavigationOther(e.OtherUserName)}>{e.OtherUserName}</button> 
+                            </div>  
+                          })}
                         </div>
                       </div>
                     </div>

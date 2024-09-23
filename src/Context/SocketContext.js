@@ -37,10 +37,11 @@ export const SocketContextProvider = ({ children }) => {
     if (profileData && localStorage.getItem("token")) {
       const socket = io("http://localhost:4000", {
         query: {
-          userId: profileData[0].id,
+          userId: profileData[0]._id,
         },
       });
       setSocket(socket);
+      console.log(socket)
 
       socket.on("getOnlineUsers", (users) => {
         setOnlineUsers(users);

@@ -4,12 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { SocketContextProvider } from './Context/SocketContext';
+import { MessageContextProvider } from './Context/MessageContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
+
   <SocketContextProvider>
-    <App />
+  {/* <MessageContextProvider> */}
+   <App />
+  {/* </MessageContextProvider> */}
   </SocketContextProvider>
   // {/* </React.StrictMode> */}
 );

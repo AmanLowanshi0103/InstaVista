@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Signup.css"
+import signUpHook from "../Hooks/signUpHook";
 
 const Signup = () => {
   const navi = useNavigate();
@@ -34,24 +35,9 @@ const Signup = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const { email, fullname, username, password } = SignUpData;
-    const Response = await fetch(
-      "http://localhost:4000/api/instavista/createuser",
-      {
-        method: "Post",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          Email: email,
-          FullName: fullname,
-          UserName: username,
-          Password: password,
-        }),
-      }
-    );
-    const data = await Response.json();
-    console.log(data);
+    
+    const data= await signUpHook(SignUpData)
+    // console.log(data);
     if (data.success) {
       localStorage.setItem("token", data.Token);
       navi("/otpverification");

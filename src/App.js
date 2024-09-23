@@ -20,10 +20,12 @@ import Settings from './Component/Settings';
 import CreateNewPassword from './Component/CreateNewPassword';
 import Messages from './Component/Messages';
 import UserMessage from './Component/UserMessage';
+import { MessageContextProvider } from './Context/MessageContext';
  
 function App() {
   return (
-    
+  <MessageContextProvider>
+
   <instaContext.Provider>
   <PostProvider>
   <Router>
@@ -47,6 +49,7 @@ function App() {
   </Router>
   </PostProvider>
   </instaContext.Provider>
+  </MessageContextProvider>
   );
 }
 
