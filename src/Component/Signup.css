@@ -9,11 +9,11 @@
 }
 .common
 {
-    background-color:grey;
-    width: 35vw;
-    height: 60vh;
-    border: 2px solid black;
-    border-radius: 10px;
+    background-color:white;
+    width: 28vw;
+    height: 65vh;
+    border: 1px solid black;
+    /* border-radius: 10px; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,27 +29,31 @@
 .input2
 {
     width: 75%;
-    margin-left: 70px;
+    height: 4vh;
+    margin-left: 60px;
     padding: 3px;
-    margin-bottom: 10px;
-    border-radius: 5px;
+    margin-bottom: 15px;
+    /* border-radius: 5px; */
 }
 .SignUp-Button{
-    margin-left: 270px;
-    background-color: rgb(57, 116, 198);
-    width: 120px;
-    height: 40px;
-    border-radius: 10px;
-    font-size: 20px;
+    margin-left: 130px;
+    height: 4vh;
+    background-color: steelblue;
+    width: 40%;
+    /* border-radius: 10px; */
+    font-size: 16x;
+    font-family: sans-serif;
 }
 .login-link
 {
-    font-size: 20px;
-    margin-right: 85px;
+    font-size: 16px;
+    margin-left: 12px;
+    font-family: sans-serif;
 }
 .signup-title
 {
     margin: 0;
     padding: 0;
     font-style: italic;
+    /* font-family: sans-serif; */
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Otpverifaction.css"
 
 const OtpVerification = () => {
   const [otp, SetOtp] = useState("");
@@ -46,9 +47,9 @@ const OtpVerification = () => {
 
   return (
     <>
-      <div className="fg-otp-div">
-        <div className="fgv-common">
-          <div className="fgv-heading">
+      <div className="Otp-otp-div">
+        <div className="Otp-fgv-common">
+          <div className="Otp-fgv-heading">
             <h1>
               <b>InstaVista</b>
             </h1>
@@ -57,9 +58,9 @@ const OtpVerification = () => {
           <h3>OTP Verification</h3>
           </div>
           <div className="">
-            <p className="fg-p">Enter the 6-digit OTP sent to your email/phone</p>
+            <p className="Otp-fg-p">Enter the 6-digit OTP sent to your email/phone</p>
             <input
-              className="fgv-inp"
+              className="Otp-fgv-inp"
               type="text"
               name="otp"
               id="otp"
@@ -69,10 +70,10 @@ const OtpVerification = () => {
             />
           </div>
           <div className="">
-            <button className="fg-button" onClick={Otpverify}>
+            <button className="Otp-fg-button" onClick={Otpverify}>
               Verify OTP
             </button>
-            <button className="fg-button" onClick={ResendOtp}>
+            <button className="Otp-fg-button" onClick={ResendOtp}>
               Resend OTP
             </button>
           </div>

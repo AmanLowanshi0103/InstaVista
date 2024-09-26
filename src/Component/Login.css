@@ -8,11 +8,11 @@
     align-items: center;
 }
 .divc{
-    background-color:grey;
-    width: 25vw;
+    background-color:white;
+    width: 20vw;
     height: 60vh;
-    border: 2px solid black;
-    border-radius: 10px;
+    border: 1px solid black;
+    /* border-radius: 10px; */
 }
 .img-login{
     width: 25vw;
@@ -32,35 +32,38 @@
 }
 .input1{
     box-sizing: border-box;
-    width:100%;
-    height: 5vh;
-    border-radius: 5px;
-    margin:5px;
+    width:80%;
+    height: 4vh;
+    /* border-radius: px; */
+    margin-left:40px;
+    margin-top: 12px;
 }
 :placeholder-shown
 {
-    font-size: 20px;
+    font-size: 16px;
 }
 .button-login
 {
     margin-top: 15px;
     width: 40%;
-    height: 5vh;
+    height: 4vh;
     margin-left: 110px;
-    border-radius: 13px;
-    font-size: 20px; 
+    /* border-radius: 4px; */
+    font-size: 16px; 
+    font-family:sans-serif;
     background-color: steelblue;
 }
 .div7
 {
     margin-top: 17px;
-    margin-left: 110px;
+    margin-left: 120px;
 }
 .Link-cs
 {
     text-decoration: none;
-    font-size: 20px; 
+    font-size: 16px; 
     color:black;
+    font-family: sans-serif;
 }
 
 .div5
@@ -72,5 +75,6 @@
 .div6 >p
 {
     /* background-color: rgb(64, 131, 2); */
-    font-size: 20px;
+    font-size: 17px;
+    font-family: sans-serif;
 }

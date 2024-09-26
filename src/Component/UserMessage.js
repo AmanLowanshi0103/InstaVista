@@ -3,10 +3,12 @@ import Navbar from "./Navbar";
 import { useNavigate, useParams } from "react-router-dom";
 
 // import useConversation from "../Zustand/useConversation"
+import { useMessageContext } from "../Context/MessageContext";
 
 
 
 import "./Message.css";
+import { useListenMessage } from "../Hooks/useListenMessage";
 
 const UserMessage = () => {
 
@@ -18,7 +20,8 @@ const UserMessage = () => {
   const { username } = useParams();
 
   // for Storing messages
-  const [Conversation, setConversation] = useState([]);
+  const {message,setMessage}=useMessageContext();
+  useListenMessage()
 
 
   const UserData1 = async () => {
@@ -52,7 +55,7 @@ const UserMessage = () => {
       }
     );
     const res = await response.json();
-    setConversation(res);
+    setMessage(res);
     // setMessage(res)
   };
 
@@ -92,8 +95,8 @@ const UserMessage = () => {
                     <div className="chat-header-name">{chatUserName}</div>
                   </div>
                 </div>
-                {Conversation &&
-                  Conversation.map((e) => {
+                {message &&
+                  message.map((e) => {
                     return <div className="chat-messages">
                       <div
                         className={`message ${

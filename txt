@@ -1,11 +1,9 @@
 
-issue 3: comment is disappearing from the modal when user double click on it.
 
 
-issue 4: all the post gets delete when user delete the comment of the post on redirecting to the use page
 
 
-issue 5: on 
+issue 5: User does not navigate to the searched user profile,when user saearched an existing user and click on it. 
 
 
 

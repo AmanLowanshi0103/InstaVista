@@ -17,16 +17,16 @@
 }
 .profile-page
 {
-    width: 60vw;
+    width: 60.2vw;
     min-height: 100vh;
     /* background-color: aqua; */
     margin: auto;
-    border: 2px solid black;
+    border: 1px solid black;
     border-radius: 10px;
 }
 .image-and-profile
 {
-    width: 60vw;
+    width: 60.2vw;
     height: 25vh;
     /* background-color: cadetblue; */
     display: flex;
@@ -100,10 +100,10 @@
 .Post-div
 {
     display: flex;
-    /* flex-wrap: wrap; */
-    width: 60vw;
+    flex-wrap: wrap;
+    width: 60.2vw;
     min-height: 100vh;
-    border: 2px solid black;
+    border: 1px solid black;
     /* background-color: chocolate; */
 }
 

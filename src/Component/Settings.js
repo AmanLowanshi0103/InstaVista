@@ -43,7 +43,6 @@ const Settings = () => {
 
       if (!response.ok) throw new Error("Failed to change account type");
       const res = await response.json();
-      // console.log(res);
       setAccountType1(!AccountType1)
     } catch (error) {
       console.error("Error changing account type:", error);
@@ -56,7 +55,6 @@ const Settings = () => {
 
   useEffect(() => {
     userData();
-    // console.log("User data fetched");
   }, [AccountType1]);
 
   return (

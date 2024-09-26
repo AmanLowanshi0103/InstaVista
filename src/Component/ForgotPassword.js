@@ -31,12 +31,11 @@ const ForgotPassword = () => {
     <>
     <div className="forgotpassword-div">
       <div className="forgotpassword-box">
-        <div className="fg-heading">
+        <div className="forgotfg-heading">
         <h1>
           <b>InstaVista</b>
         </h1>
         </div>
-        <hr className="fg-hr"></hr>
         <div>
         <h4>Forgot Password</h4>
         </div>

@@ -241,4 +241,29 @@ router.put("/loginCreatePassword",fectchUser,async(req,res)=>
   }
 })
 
+
+
+
+router.get("/getallUser",async(req,res)=>
+{
+  try{
+    let User=await user.find({});
+    // console.log(User);
+    res.json(User)
+  }
+  catch (error) {
+    res.status(500).send({ success, error: "Internal server error" }); // Changed status code to 500 for server errors
+    console.log(error);
+  }
+})
+
+
+
+
+
+
+
+
+
+
 module.exports = router;

@@ -1,4 +1,4 @@
-.fg-otp-div
+.Otp-otp-div
 {
     width: 100vw;
     height: 100vh;
@@ -6,7 +6,7 @@
     justify-content: center;
     align-items: center;
 }
-.fgv-common
+.Otp-fgv-common
 {
     background-color:white;
     width: 25vw;
@@ -19,14 +19,26 @@
     align-items: center;
     gap:30px;
 }
-.fgv-heading
+.Otp-fgv-heading
 {
     margin: 0;
     padding: 0;
     font-style: italic;
 }
-.fgv-inp{
+.Otp-fgv-inp{
     width:15vw;
     height: 4vh;
     margin-left: 50px;
+}
+.Otp-fg-button
+{
+    width: 8vw;
+    background-color: steelblue;
+    height: 4vh;
+    margin-left: 8px;
+}
+.Otp-fg-p 
+{
+    font-size: 16px;
+    font-family: serif;
 }
