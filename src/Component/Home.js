@@ -33,7 +33,7 @@ const Home = () => {
       <div className="card-align"></div>
     {AllPost.map((e)=>
           {
-            return <div className="grid-container"><HomeAllPost userProfileImage={e.User[0].userImage} userName={e.userName} key={e.id+e.user} id={e._id} image={e.image} likes={e.likes} allPost={allPost} comment={e.comment}/></div>
+            return <div className="grid-container"><HomeAllPost PostedByuserId={e.User} key={e.id+e.user} id={e._id} image={e.image} likes={e.likes} allPost={allPost} comment={e.comment}/></div>
           })
         }
     </div>

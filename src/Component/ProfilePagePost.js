@@ -1,7 +1,6 @@
-// Create a context for all images in the ../images directory
-// import "./AddPost.css";
-// import ReactDOM from 'react-dom'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+
+
 import "./ProfilePagePost.css"
 import { useEffect, useState } from "react";
 

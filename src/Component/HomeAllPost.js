@@ -1,25 +1,43 @@
 import { useNavigate } from "react-router-dom";
 import "./HomeAllPost.css";
 import { useEffect, useState } from "react";
+import particularUserHooks from "../Hooks/particularUserHook"
 
 import { FcLike } from "react-icons/fc";
 import { FaRegComment } from "react-icons/fa6";
 import { MdDeleteOutline } from "react-icons/md";
 import { CiHeart } from "react-icons/ci";
 
+
 const images = require.context("../images", false, /\.(png|jpe?g|svg)$/);
 
-const HomeAllPost = ({ id, image, likes, allPost, userName, comment,userProfileImage }) => {
+const HomeAllPost = ({ id, image, likes, allPost, userName, comment,PostedByuserId }) => {
   const [Liked, SetLiked] = useState(true);
   const [CommentDisplay, SetCommentDisplay] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [desc, setdesc] = useState("");
+  const [UserImage,setUserImage]=useState([]);
   let navi = useNavigate();
+
+  const userData = async () => {
+    try {
+      const res=await particularUserHooks(PostedByuserId);
+      console.log(res)
+      setUserImage(res);
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  };
 
   useEffect(() => {
     // Fetch comments and other data if necessary on mount
     SetCommentDisplay(comment);
   }, [comment]);
+
+  useEffect(()=>
+  {
+    userData()
+  },[])
 
   const toggleModal = () => {
     SetLiked(!Liked);
@@ -117,7 +135,7 @@ const HomeAllPost = ({ id, image, likes, allPost, userName, comment,userProfileI
   // another image function for profile 
   let profileImagePath;
   try {
-    profileImagePath = images(`./${userProfileImage}`);
+    profileImagePath = images(`./${UserImage.ProfileImage}`);
   } catch (err) {
     console.error(err);
     profileImagePath = images("./test.jpg"); // Provide a default image path here
@@ -129,9 +147,9 @@ const HomeAllPost = ({ id, image, likes, allPost, userName, comment,userProfileI
        <img key={id} src={profileImagePath} className="image-heading" alt="..." />
         <button
           className="userName-heading"
-          onClick={() => userNameClick(userName)}
+          onClick={() => userNameClick(UserImage.UserName)}
         >
-          {userName}
+          {UserImage && UserImage.UserName}
         </button>
       </div>
       <hr className="userName-horizonatal" />

@@ -26,7 +26,6 @@ const upload = multer({
 });
 
 router.post("/addpost", fetchUser, upload.single("file"), async (req, res) => {
-  // console.log(req.user);
   let success = false;
   try {
     let User= await user.findOne({_id:req.user})
@@ -169,7 +168,7 @@ router.delete("/deletecomment",fetchUser,async(req,res)=>
       console.log(error.message)
       res.status(500).send({error:"Internal server Error2"})
     }
-  })
+})
 
 
 // Profile Pic 

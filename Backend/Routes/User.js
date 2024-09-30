@@ -259,11 +259,23 @@ router.get("/getallUser",async(req,res)=>
 
 
 
-
-
-
-
-
-
+router.post("/getaparticularUserData",async(req,res)=>
+{
+   try
+   {
+    console.log("test for paritcu;lar user",req.body)
+    const {PostedByuserId}=req.body;
+    let User=await user.findOne({_id:PostedByuserId})
+    if(!User)
+    {
+      return res.status(400).json({"Error":"user does not exists"})
+    }
+    res.json(User)
+   }
+   catch (error) {
+    res.status(500).send({error: "Internal server error" }); // Changed status code to 500 for server errors
+    console.log(error);
+  }
+})
 
 module.exports = router;
