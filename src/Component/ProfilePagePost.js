@@ -5,6 +5,12 @@
 import "./ProfilePagePost.css"
 import { useEffect, useState } from "react";
 
+import { FcLike } from "react-icons/fc";
+import { FaRegComment } from "react-icons/fa6";
+import { MdDeleteOutline } from "react-icons/md";
+import { CiHeart } from "react-icons/ci";
+
+
 const images = require.context('../images', false, /\.(png|jpe?g|svg)$/);
 
 const ProfilePagePost = ({id, image,likes,AllPost,checkUser,comment }) => {
@@ -126,14 +132,11 @@ const ProfilePagePost = ({id, image,likes,AllPost,checkUser,comment }) => {
     }
   };
   
-
-   
-
   return <div class="profile-card" >
   <img key={id} src={imagePath} class="profile-card-img-top" alt="..." />
   <div className="Post-button">
-  <button className="button-post" onClick={(e)=>{toggleModal();onClick()}}>@({likes.length})</button>
-  <button className="button-post" onClick={toggleModalforcomments}>!({CommentDisplay.length})</button>
+  <button className="button-post" onClick={(e)=>{toggleModal();onClick()}}>{!Liked?<FcLike/>:<CiHeart />}{likes.length}</button>
+  <button className="button-post" onClick={toggleModalforcomments}><FaRegComment />{CommentDisplay.length}</button>
   {isModalOpen && (
           <div className="commentModal">
             <div className="commentModal-content">
@@ -147,7 +150,7 @@ const ProfilePagePost = ({id, image,likes,AllPost,checkUser,comment }) => {
                     <div>
                       <div>{e.userName}</div>
                       <div>{e.desc}</div>
-                      <button onClick={()=>onDeletecommet(e.desc)}>Delete</button>
+                      <button onClick={()=>onDeletecommet(e.desc)}><MdDeleteOutline /></button>
                     </div>
                   );
                 })}
@@ -168,7 +171,7 @@ const ProfilePagePost = ({id, image,likes,AllPost,checkUser,comment }) => {
             </div>
           </div>
         )}
-  {checkUser && <button className="button-post" onClick={(e)=>{onDelete()}}>#</button>
+  {checkUser && <button className="button-post" onClick={(e)=>{onDelete()}}><MdDeleteOutline /></button>
   }
   </div>
   </div>

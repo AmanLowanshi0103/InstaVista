@@ -5,6 +5,8 @@ import { BiSolidMessageRoundedMinus } from "react-icons/bi";
 import { useImplementContext } from "../Context/ImplemetContext";
 import { useState } from "react";
 
+import { IoIosLogOut } from "react-icons/io";
+
 const Navbar = () => {
   const [AllUser, setAllUser] = useState();
   const getAllUser = async () => {
@@ -89,7 +91,7 @@ const Navbar = () => {
       </div>
       <div>
         <button className="logout-button" onClick={onClick}>
-          logout
+        <IoIosLogOut />
         </button>
       </div>
       </div>

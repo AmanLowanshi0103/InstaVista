@@ -89,7 +89,7 @@
 .chat-messages {
     flex-grow: 1;
     padding: 15px;
-    overflow-y: auto;
+    /* overflow-y: auto; */
 }
 
 .message {

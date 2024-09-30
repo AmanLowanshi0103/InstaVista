@@ -22,7 +22,7 @@
     /* background-color: aqua; */
     margin: auto;
     border: 1px solid black;
-    border-radius: 10px;
+    /* border-radius: 10px; */
 }
 .image-and-profile
 {
@@ -43,8 +43,8 @@
 
 .profile-pic
 {
-    height: 24vh;
-    width: 19vw;
+    height: 21vh;
+    width: 11vw;
     border-radius: 120px;
     display: block;
     margin: auto;

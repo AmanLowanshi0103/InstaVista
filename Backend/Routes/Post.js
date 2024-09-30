@@ -30,9 +30,9 @@ router.post("/addpost", fetchUser, upload.single("file"), async (req, res) => {
   let success = false;
   try {
     let User= await user.findOne({_id:req.user})
-    // console.log(User);
+
     let post = await Post.create({
-      User: req.user,
+      User:req.user,
       userName:User.UserName,
       image: req.file.filename,
       likes: [],
@@ -49,7 +49,8 @@ router.post("/addpost", fetchUser, upload.single("file"), async (req, res) => {
 router.get("/allpostuser", fetchUser, async (req, res) => {
   let success = false;
   try {
-    let post = await Post.find({ User: req.user });
+    let post = await Post.find({User:req.user});
+    console.log(post)
     success = true;
     post.reverse();
     res.json(post);

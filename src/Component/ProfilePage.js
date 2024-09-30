@@ -176,7 +176,6 @@ const ProfilePage = () => {
 
   let imagePath;
   try {
-    // Dynamically require the image using the context
     if(ProfileData[0].ProfileImage)
     {
       imagePath = images(`./${ProfileData[0].ProfileImage}`);
@@ -185,7 +184,6 @@ const ProfilePage = () => {
       imagePath= images(`./test.jpg`)
     }
   } catch (err) {
-    // Fallback to a default image if the specific image is not found
     console.log(err)
   }
 

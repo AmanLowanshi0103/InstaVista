@@ -125,16 +125,17 @@ const Messages = () => {
                       </div>
                     </div>;
                   })}
-              </>
-            ) : (
-              <div>Please Select any contact for Message</div>
-            )}
+              
 
             {/* Chat Input Box */}
             <div className="chat-input">
               <input type="text" onChange={(e)=>setTextMessage(e.target.value)} value={TextMessage}placeholder="Type your message here" />
               <button className="send-button" onClick={SendMessage}>Send</button>
             </div>
+            </>
+            ): (
+              <div>Start messaging by selecting a user from the sidebar.</div>
+            )}
           </div>
         </div>
       </div>
