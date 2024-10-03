@@ -176,16 +176,21 @@ const HomeAllPost = ({ id, image, likes, allPost, userName, comment,PostedByuser
               <h2>Comment</h2>
               <div className="allcomments">
                 {CommentDisplay.map((e) => (
-                  <div key={e._id}>
-                    <div>{e.userName}</div>
-                    <div>{e.desc}</div>
-                    <button onClick={() => onDelete(e.desc)}><MdDeleteOutline /></button>
+                  <div className="Comment_Main_Div" key={e._id}>
+                    <div className="heading_div">
+                    <div className="Comment_UserName">{e.userName}</div>
+                    <div>
+                    <button className="deletebutton" onClick={() => onDelete(e.desc)}><MdDeleteOutline /></button>
+                    </div>
+                    </div>
+                    <hr className="hrline_div"></hr>
+                    <div className="Comment_Description">{e.desc}</div>
                   </div>
                 ))}
               </div>
               <form onSubmit={onSubmit}>
                 <input
-                  className="input2"
+                  className="input21"
                   type="text"
                   name="desc"
                   id="desc"

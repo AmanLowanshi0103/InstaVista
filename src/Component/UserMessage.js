@@ -9,6 +9,7 @@ import { useMessageContext } from "../Context/MessageContext";
 
 import "./Message.css";
 import { useListenMessage } from "../Hooks/useListenMessage";
+import { useImplemetContext } from "../Context/ImplemetContext";
 
 const UserMessage = () => {
 
@@ -24,23 +25,13 @@ const UserMessage = () => {
   useListenMessage()
 
 
-  const UserData1 = async () => {
-    // console.log("test1");
-    const token = localStorage.getItem("token");
-    const response = await fetch(
-      "http://localhost:4000/api/instavista/getuser",
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          token: token,
-        },
-      }
-    );
-    const res = await response.json();
-    setProfileData(res);
-    console.log(res);
-  };
+  const {LoginUserProfileData}=useImplemetContext();
+  useEffect(()=>
+  {
+    console.log("tets")
+    setProfileData(LoginUserProfileData);
+  },[])
+
 
   const onClick = async (chatuserName) => {
     const token = localStorage.getItem("token");
@@ -79,7 +70,7 @@ const UserMessage = () => {
   }
   
   useEffect(() => {
-    UserData1();
+    // UserData1();
     setChatUserName(username)
     onClick(username)
   }, []);

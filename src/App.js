@@ -21,10 +21,11 @@ import CreateNewPassword from './Component/CreateNewPassword';
 import Messages from './Component/Messages';
 import UserMessage from './Component/UserMessage';
 import { MessageContextProvider } from './Context/MessageContext';
-import { ImplementContextProvider } from './Context/ImplemetContext';
+import { ImplemetContextProvider } from './Context/ImplemetContext';
  
 function App() {
   return (
+  <ImplemetContextProvider>
   <MessageContextProvider>
   <instaContext.Provider>
   <PostProvider>
@@ -50,6 +51,7 @@ function App() {
   </PostProvider>
   </instaContext.Provider>
   </MessageContextProvider>
+  </ImplemetContextProvider>
   );
 }
 

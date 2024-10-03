@@ -177,7 +177,7 @@ router.put("/updateuser", fectchUser, async (req, res) => {
     
     let updatedUser = await user.findByIdAndUpdate(User1._id, Data, { new: true });
     success = true;
-    res.json({ success, updatedUser });
+    res.json({success,updatedUser});
 
   } catch (error) {
     res.status(500).send({ success, error: "Internal server error" }); // Changed status code to 500 for server errors

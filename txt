@@ -8,7 +8,7 @@ issue 5: User does not navigate to the searched user profile,when user saearched
 
 
 
-
+found an issue which is problmatic for whole system is toHaveTextContent, when user update his  username then , the user is not updating in the database of the other user who is following or follower of that user 
 
 
 

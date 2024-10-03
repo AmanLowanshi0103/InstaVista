@@ -4,11 +4,13 @@ import { useNavigate } from "react-router-dom";
 import ProfilePagePost from "./ProfilePagePost";
 import "./ProfilePage.css";
 
+import { useImplemetContext } from "../Context/ImplemetContext";
+
 const images = require.context('../images', false, /\.(png|jpe?g|svg)$/);
 
 const ProfilePage = () => {
   useEffect(() => {
-    UserData1();
+    // UserData1();
     AllPost();
   }, []);
 
@@ -26,33 +28,31 @@ const ProfilePage = () => {
   const [ProfilePic,setProfilePic]=useState({})
 
 
-
-
-
+  
+  
+  
   // Function to toggle the modal
   const toggleModal = (e) => {
     e.preventDefault();
     setIsModalOpen(!isModalOpen);
   };
-
+  
   // fetching the data of the user
   const [Bool, SetBool] = useState("true");
-  const UserData1 = async () => {
-    // console.log("test1");
-    const token = localStorage.getItem("token");
-    const response = await fetch(
-      "http://localhost:4000/api/instavista/getuser",
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          token: token,
-        },
-      }
-    );
-    const res = await response.json();
-    SetProfileData(res);
-  };
+  
+  const {LoginUserProfileData}=useImplemetContext();
+  
+  useEffect(()=>{
+    SetProfileData(LoginUserProfileData);
+    console.log(ProfileData)
+    console.log("first")
+  },[])
+  useEffect(()=>
+  {
+    SetProfileData(LoginUserProfileData);
+    console.log(ProfileData)
+    console.log("Second")
+  },[ProfileData])
   
 
   // Add post for the user functionalti

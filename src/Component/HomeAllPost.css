@@ -116,3 +116,56 @@
     display: flex;
     gap:20px;
   }
+
+  .Comment_Main_Div
+  {
+    width: 100%;
+    height: 8vh;
+    border: 1px solid;
+    margin-top: 2px;
+  }
+
+  .hrline_div
+  {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .heading_div
+  {
+    display: flex;
+    gap:30vw;
+  }
+  
+  .deletebutton
+  {
+    border: none;
+    background-color: white;
+  }
+
+  .Comment_Description
+  {
+    margin-top: 0px;
+  }
+
+  .input21
+  {
+    margin-left: 0px;
+    margin-top: 5px;
+    width: 38vw;
+  }
+  .Comment_UserName
+  {
+    /* border: 1px solid; */
+    width: 200px;
+  }
+
+  .button-submit-ProfilePage
+  {
+    width: 75px;
+    background-color: steelblue;
+    color: white;
+    border: 1px solid;
+    border-radius: 2px;
+  }
+  

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./EditProfile.css";
+import { useImplemetContext } from "../Context/ImplemetContext";
 
 const EditProfile = () => {
   let navi = useNavigate();
+  const {setLoginUserProfileData}=useImplemetContext();
   const [ProfileDataUpdate, SetProfileDataUpdate] = useState({
     Email: "",
     FullName: "",
@@ -34,6 +36,8 @@ const EditProfile = () => {
     );
     const res = await response.json();
     if (res.success) {
+      console.log(res.updatedUser)
+      setLoginUserProfileData(res.updatedUser)
       navi("/profile");
     }
   };

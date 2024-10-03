@@ -144,15 +144,18 @@ const ProfilePagePost = ({id, image,likes,AllPost,checkUser,comment }) => {
               </span>
               <h2>Comment</h2>
               <div className="allcomments">
-                {CommentDisplay.map((e) => {
-                  return (
+              {CommentDisplay.map((e) => (
+                  <div className="Comment_Main_Div" key={e._id}>
+                    <div className="heading_div">
+                    <div className="Comment_UserName">{e.userName}</div>
                     <div>
-                      <div>{e.userName}</div>
-                      <div>{e.desc}</div>
-                      <button onClick={()=>onDeletecommet(e.desc)}><MdDeleteOutline /></button>
+                    <button className="deletebutton" onClick={() => onDelete(e.desc)}><MdDeleteOutline /></button>
                     </div>
-                  );
-                })}
+                    </div>
+                    <hr className="hrline_div"></hr>
+                    <div className="Comment_Description">{e.desc}</div>
+                  </div>
+                ))}
               </div>
               <form onSubmit={onSubmit}>
                 <input
@@ -165,7 +168,7 @@ const ProfilePagePost = ({id, image,likes,AllPost,checkUser,comment }) => {
                     setdesc(e.target.value);
                   }}
                 />
-                <button className="button-sumbit-ProfilePage">Upload</button>
+                <button className="button-submit-ProfilePage">Upload</button>
               </form>
             </div>
           </div>

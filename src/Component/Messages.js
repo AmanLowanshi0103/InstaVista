@@ -5,6 +5,8 @@ import "./Message.css";
 import { useMessageContext } from "../Context/MessageContext";
 import { useListenMessage } from "../Hooks/useListenMessage";
 
+import { useImplemetContext } from "../Context/ImplemetContext";
+
 const Messages = () => {
   const [ProfileData, setProfileData] = useState({});
   const [sidebarUser, setSidebarUser] = useState([]);
@@ -19,24 +21,14 @@ const Messages = () => {
   // Render update
   const [Test,setTest]=useState(0)
 
-  const UserData1 = async () => {
-    // console.log("test1");
-    const token = localStorage.getItem("token");
-    const response = await fetch(
-      "http://localhost:4000/api/instavista/getuser",
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          token: token,
-        },
-      }
-    );
-    const res = await response.json();
-    setProfileData(res);
-    setSidebarUser(res[0].Following);
-    console.log(res);
-  };
+  const {LoginUserProfileData}=useImplemetContext();
+  useEffect(()=>
+  {
+    setProfileData(LoginUserProfileData);
+    // console.log(LoginUserProfileData[0].Following)
+    setSidebarUser(LoginUserProfileData[0].Following);
+    // console.log(sidebarUser)
+  },[])
 
   const onClick = async (chatuserName) => {
     setChatUserName(chatuserName);
@@ -75,10 +67,6 @@ const Messages = () => {
     setTextMessage("")
     onClick(chatUserName)
   }
-
-  useEffect(() => {
-    UserData1();
-  }, []);
 
 
   return (

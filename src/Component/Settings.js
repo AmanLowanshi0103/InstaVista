@@ -3,32 +3,20 @@ import Navbar from './Navbar';
 import "./Setting.css";
 import { useNavigate } from 'react-router-dom';
 
+import { useImplemetContext } from "../Context/ImplemetContext";
+
 const Settings = () => {
   const navi = useNavigate();
   const [User, setUser] = useState([]);
   const [AccountType1, setAccountType1] = useState("");
 
-  const userData = async () => {
-    try {
-      const token = localStorage.getItem("token");
-      const response = await fetch(`http://localhost:4000/api/instavista/getuser`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          token: token,
-        },
-      });
 
-      if (!response.ok) throw new Error("Failed to fetch user data");
-      const res = await response.json();
-      // console.log(res)
-      // setUser(res);
-      setAccountType1(res[0].AccountType)
-    } catch (error) {
-      console.error("Error fetching user data:", error);
-      // Optional: Handle token expiration or other errors here
-    }
-  };
+  const {LoginUserProfileData}=useImplemetContext();
+  useEffect(()=>
+  {
+    setAccountType1(LoginUserProfileData.AccountType);
+  },[])
+
 
   const onChange = async () => {
     try {
@@ -53,9 +41,6 @@ const Settings = () => {
     navi("/createnewpassword");
   };
 
-  useEffect(() => {
-    userData();
-  }, [AccountType1]);
 
   return (
     <div className='setting-Class'>
