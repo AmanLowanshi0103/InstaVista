@@ -26,14 +26,32 @@ const userSchemas= new Schema(
     ProfileImage:{
         type:String,
     },
-    Follower:
-    {
-        type:Array
-    },
-    Following:
-    {
-        type:Array
-    },
+    Follower:[
+       {
+        reqId:
+        {
+            type: mongoose.Schema.Types.ObjectId, 
+            ref: 'user' 
+        },
+        UserName:
+        {
+            type:String,
+        }
+       }
+    ],
+    Following:[
+        {
+         OtherId:
+         {
+             type: mongoose.Schema.Types.ObjectId, 
+             ref: 'user' 
+         },
+         OtherUserName:
+         {
+             type:String,
+         }
+        }
+     ],
     Bio:
     {
         type:String

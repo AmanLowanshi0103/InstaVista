@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Link, useNavigate } from "react-router-dom";
-import "./Login.css"
+import "../CssFile/Login.css"
 import loginHook from "../Hooks/loginHook"
 
 const images = require.context('../images', false, /\.(png|jpe?g|svg)$/);

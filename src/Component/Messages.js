@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 
-import "./Message.css";
+import "../CssFile/Message.css";
 import { useMessageContext } from "../Context/MessageContext";
 import { useListenMessage } from "../Hooks/useListenMessage";
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from './Navbar';
-import "./Setting.css";
+import "../CssFile/Setting.css";
 import { useNavigate } from 'react-router-dom';
 
 import { useImplemetContext } from "../Context/ImplemetContext";

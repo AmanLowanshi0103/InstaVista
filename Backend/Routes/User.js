@@ -7,6 +7,7 @@ const SignJWT = "test123";
 const jwt = require("jsonwebtoken");
 const fectchUser = require("../Middle/fetchUser");
 const { useState } = require("react");
+const { MongoClient, ObjectId } = require('mongodb');
 
 // Route 1 : {Post} Create an user :api/instavista/createuser
 
@@ -46,9 +47,9 @@ router.post(
         Password: secpassword,
         Follower: [],
         Following: [],
-        Bio:"",
-        AccountType:true,
-        ProfileImage:""
+        Bio: "",
+        AccountType: true,
+        ProfileImage: "",
       });
       data = {
         user: User.id,
@@ -151,10 +152,10 @@ router.get("/getuser", fectchUser, async (req, res) => {
 router.put("/updateuser", fectchUser, async (req, res) => {
   let success = false;
   try {
-    console.log(req.body)
+    console.log(req.body);
     const { Email, FullName, UserName, Bio } = req.body; // Corrected here
     const Data = {};
-    
+
     if (Email) {
       Data.Email = Email;
     }
@@ -169,113 +170,117 @@ router.put("/updateuser", fectchUser, async (req, res) => {
     }
 
     console.log(Data);
-    
+
     let User1 = await user.findOne({ _id: req.user }); // Corrected here
     if (!User1) {
       return res.status(400).send({ success, error: "User does not exist" });
     }
-    
-    let updatedUser = await user.findByIdAndUpdate(User1._id, Data, { new: true });
+    let updatedUser = await user.findByIdAndUpdate(User1._id, Data, {
+      new: true,
+    });
     success = true;
-    res.json({success,updatedUser});
 
+    // file go through DB Connection
+
+    // let db;
+    // const mongoUri="mongodb://localhost:27017/InstaVista"
+
+    // MongoClient.connect(mongoUri, {
+    //   useNewUrlParser: true,
+    //   useUnifiedTopology: true,
+    // })
+    //   .then((client) => {
+    //     console.log("Connected to MongoDB");
+    //     db = client.db();
+    //   })
+    //   .catch((error) => console.error("Failed to connect to MongoDB:", error));
+
+    // const result = await db.collection("user").updateMany(
+    //   { "Follower.reqId": ObjectId(User1._id) }, // Search criteria
+    //   { $set: { "Follower.$.UserName": UserName } } // Update operation
+    // );
+    // console.log(result)
+
+    res.json({ success, updatedUser });
   } catch (error) {
     res.status(500).send({ success, error: "Internal server error" }); // Changed status code to 500 for server errors
     console.log(error);
   }
 });
 
-
 //  {Put} for updating user account type with the help of ("/changeaccouttype")
 
-router.put("/changeaccouttype",fectchUser,async(req,res)=>
-{
-  try{
-    console.log(req.user)
+router.put("/changeaccouttype", fectchUser, async (req, res) => {
+  try {
+    console.log(req.user);
     let User1 = await user.findOne({ _id: req.user }); // Corrected here
     if (!User1) {
       return res.status(400).send({ success, error: "User does not exist" });
     }
-    const Data={
-      AccountType:!User1.AccountType
-    }
-    
-    let updatedUser = await user.findByIdAndUpdate(User1._id, Data, { new: true });
+    const Data = {
+      AccountType: !User1.AccountType,
+    };
+
+    let updatedUser = await user.findByIdAndUpdate(User1._id, Data, {
+      new: true,
+    });
     success = true;
     res.json({ success, updatedUser });
-  }catch (error) {
+  } catch (error) {
     res.status(500).send({ success, error: "Internal server error" }); // Changed status code to 500 for server errors
     console.log(error);
   }
-})
+});
 
-
-
-router.put("/loginCreatePassword",fectchUser,async(req,res)=>
-{
-  try
-  {
-    const {newPassword,oldPassword}=req.body;
-    const Changepassword={}
-    let User= await user.findOne({_id:req.user})
+router.put("/loginCreatePassword", fectchUser, async (req, res) => {
+  try {
+    const { newPassword, oldPassword } = req.body;
+    const Changepassword = {};
+    let User = await user.findOne({ _id: req.user });
     const passwordCompare = await bcrypt.compare(oldPassword, User.Password);
-    if(passwordCompare)
-    {
+    if (passwordCompare) {
       const salt = await bcrypt.genSaltSync(10);
       const secpassword = await bcrypt.hashSync(newPassword, salt);
-      Changepassword.Password=secpassword;
+      Changepassword.Password = secpassword;
       let User1 = await user.findByIdAndUpdate(User._id, Changepassword, {
         new: true,
       });
       success = true;
       res.json({ success, Status: "Password Changed success" });
-    }
-    else{
+    } else {
       success = false;
       res.json({ success, Status: "Invalid Old Password success" });
     }
-  }
-  catch (error) {
+  } catch (error) {
     res.status(500).send({ success, error: "Internal server error" }); // Changed status code to 500 for server errors
     console.log(error);
   }
-})
+});
 
-
-
-
-router.get("/getallUser",async(req,res)=>
-{
-  try{
-    let User=await user.find({});
+router.get("/getallUser", async (req, res) => {
+  try {
+    let User = await user.find({});
     // console.log(User);
-    res.json(User)
-  }
-  catch (error) {
+    res.json(User);
+  } catch (error) {
     res.status(500).send({ success, error: "Internal server error" }); // Changed status code to 500 for server errors
     console.log(error);
   }
-})
+});
 
-
-
-router.post("/getaparticularUserData",async(req,res)=>
-{
-   try
-   {
-    console.log("test for paritcu;lar user",req.body)
-    const {PostedByuserId}=req.body;
-    let User=await user.findOne({_id:PostedByuserId})
-    if(!User)
-    {
-      return res.status(400).json({"Error":"user does not exists"})
+router.post("/getaparticularUserData", async (req, res) => {
+  try {
+    console.log("test for paritcu;lar user", req.body);
+    const { PostedByuserId } = req.body;
+    let User = await user.findOne({ _id: PostedByuserId });
+    if (!User) {
+      return res.status(400).json({ Error: "user does not exists" });
     }
-    res.json(User)
-   }
-   catch (error) {
-    res.status(500).send({error: "Internal server error" }); // Changed status code to 500 for server errors
+    res.json(User);
+  } catch (error) {
+    res.status(500).send({ error: "Internal server error" }); // Changed status code to 500 for server errors
     console.log(error);
   }
-})
+});
 
 module.exports = router;

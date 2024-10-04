@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Otpverifaction.css"
+import "../CssFile/Otpverifaction.css"
 
 const OtpVerification = () => {
   const [otp, SetOtp] = useState("");

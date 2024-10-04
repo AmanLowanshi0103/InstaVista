@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import { useNavigate, useParams } from "react-router-dom";
 import ProfilePagePost from "./ProfilePagePost";
-import "./ProfilePage.css";
+import "../CssFile/ProfilePage.css";
 
 
 const images = require.context('../images', false, /\.(png|jpe?g|svg)$/);

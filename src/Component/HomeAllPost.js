@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import "./HomeAllPost.css";
+import "../CssFile/HomeAllPost.css";
+
 import { useEffect, useState } from "react";
 import particularUserHooks from "../Hooks/particularUserHook"
 

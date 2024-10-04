@@ -1,7 +1,7 @@
 
 
 
-import "./ProfilePagePost.css"
+import "../CssFile/ProfilePagePost.css"
 import { useEffect, useState } from "react";
 
 import { FcLike } from "react-icons/fc";

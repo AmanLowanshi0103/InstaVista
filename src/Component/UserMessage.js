@@ -7,7 +7,7 @@ import { useMessageContext } from "../Context/MessageContext";
 
 
 
-import "./Message.css";
+import "../CssFile/Message.css";
 import { useListenMessage } from "../Hooks/useListenMessage";
 import { useImplemetContext } from "../Context/ImplemetContext";
 
